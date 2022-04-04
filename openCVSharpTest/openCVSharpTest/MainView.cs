@@ -3,10 +3,10 @@ using OpenCvSharp.Extensions;
 
 namespace openCVSharpTest
 {
-    public partial class Form1 : Form
+    public partial class MainView : Form
     {
         Mat image;
-        public Form1()
+        public MainView()
         {
             InitializeComponent();
             image = new Mat();
@@ -66,7 +66,16 @@ namespace openCVSharpTest
                 PictureBox pic = (PictureBox)sender;
                 System.Drawing.Point pos = GetMousePos(pic);
 
-                label_xy.Text = pos.X.ToString() + ", " + pos.Y.ToString();
+                int imgWidth = image.Width;
+                int imgHeight = image.Height;
+
+                int picWidth = pic.Width;
+                int picHeight = pic.Height;
+
+                int currX = imgWidth * pos.X / picWidth;
+                int currY = imgHeight * pos.Y / picHeight;
+
+                label_xy.Text = currX.ToString() + ", " + currY.ToString();
             }
         }
 
@@ -87,6 +96,27 @@ namespace openCVSharpTest
             if(e.Button == MouseButtons.Right)
             {
                 contextMenuPicture.Show(this, e.Location);
+            }
+        }
+
+        private void pictureBox_view_DragDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                var imgPath = (string)e.Data.GetData(DataFormats.FileDrop);
+                image = Cv2.ImRead(imgPath, ImreadModes.Grayscale);
+
+                if (image == null)
+                {
+                    return;
+                }
+
+                Cv2.Threshold(image, image, 180, 255, ThresholdTypes.Binary);
+                pictureBox_view.Image = OpenCvSharp.Extensions.BitmapConverter.ToBitmap(image);
+            }
+            catch
+            {
+
             }
         }
     }

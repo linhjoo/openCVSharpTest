@@ -1,6 +1,6 @@
 ﻿namespace openCVSharpTest
 {
-    partial class Form1
+    partial class MainView
     {
         /// <summary>
         ///  Required designer variable.
@@ -51,6 +51,7 @@
             this.pictureBox_view.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_view.TabIndex = 0;
             this.pictureBox_view.TabStop = false;
+            this.pictureBox_view.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox_view_DragDrop);
             this.pictureBox_view.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_view_MouseDown);
             this.pictureBox_view.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_view_MouseMove);
             // 
@@ -99,27 +100,27 @@
             this.saveImageToolStripMenuItem,
             this.setROIToolStripMenuItem});
             this.contextMenuPicture.Name = "contextMenuPicture";
-            this.contextMenuPicture.Size = new System.Drawing.Size(181, 92);
+            this.contextMenuPicture.Size = new System.Drawing.Size(138, 70);
             // 
             // loadImageToolStripMenuItem
             // 
             this.loadImageToolStripMenuItem.Name = "loadImageToolStripMenuItem";
-            this.loadImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadImageToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.loadImageToolStripMenuItem.Text = "Load Image";
             // 
             // saveImageToolStripMenuItem
             // 
             this.saveImageToolStripMenuItem.Name = "saveImageToolStripMenuItem";
-            this.saveImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveImageToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.saveImageToolStripMenuItem.Text = "Save Image";
             // 
             // setROIToolStripMenuItem
             // 
             this.setROIToolStripMenuItem.Name = "setROIToolStripMenuItem";
-            this.setROIToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setROIToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.setROIToolStripMenuItem.Text = "Set ROI";
             // 
-            // Form1
+            // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -132,7 +133,7 @@
             this.Controls.Add(this.pictureBox_view);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "MainView";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_view)).EndInit();
             this.contextMenuPicture.ResumeLayout(false);
